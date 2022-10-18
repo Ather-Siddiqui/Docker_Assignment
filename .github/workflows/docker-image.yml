@@ -15,4 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      run:
+        echo "{{secrets.DOCKER_PASS}}" | docker login -u "shababather" --password-stdin
+        docker image build -t shababather/welcome-app:latest .
+        docker push shababather/welcome-app:latest
