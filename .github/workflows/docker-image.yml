@@ -17,5 +17,5 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build . --file Dockerfile --tag welcome-app:latest
-        echo "{{secrets.DOCKER_PASS}}" | docker login -u "shababather" --password "Madiha@13"
+        echo "{{secrets.DOCKER_PASS}}" | docker login -u "shababather" --password -stdin
         docker push shababather/welcome-app:latest
